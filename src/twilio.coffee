@@ -55,6 +55,7 @@ class Twilio extends Adapter
   send_sms: (message, to, callback) ->
     auth = new Buffer(@sid + ':' + @token).toString("base64")
     data = QS.stringify From: @from, To: to, Body: message
+    console.log data
 
     @http("https://api.twilio.com")
       .path("/2010-04-01/Accounts/#{@sid}/Messages")
