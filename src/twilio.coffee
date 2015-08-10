@@ -11,10 +11,10 @@ class Twilio extends Adapter
     @robot = robot
     super robot
 
-  send: (user, strings...) ->
+  send: (envelope, strings...) ->
     message = strings.join "\n"
 
-    @send_sms message, user.id, (err, body) ->
+    @send_sms message, envelope.user.id, (err, body) ->
       if err or not body?
         console.log "Error sending reply SMS: #{err}"
       else
